@@ -1,0 +1,107 @@
+<div class="container mt-5">
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <!-- Card for Adding a Student -->
+        <div class="card">
+          <div class="card-header">Ajouter un étudiant</div>
+          <div class="card-body">
+            <form [formGroup]="form" (ngSubmit)="submit()">
+              <div class="form-group">
+                <label for="nomEt">Nom:</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="nomEt" 
+                  formControlName="nomEt" 
+                  placeholder="Entrez le nom">
+                <div *ngIf="form.get('nomEt')?.invalid && form.get('nomEt')?.touched" class="text-danger">
+                  Le nom est requis.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="prenomEt">Prénom:</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="prenomEt" 
+                  formControlName="prenomEt" 
+                  placeholder="Entrez le prénom">
+                <div *ngIf="form.get('prenomEt')?.invalid && form.get('prenomEt')?.touched" class="text-danger">
+                  Le prénom est requis.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="cin">CIN:</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="cin" 
+                  formControlName="cin" 
+                  placeholder="Entrez le CIN">
+                <div *ngIf="form.get('cin')?.invalid && form.get('cin')?.touched" class="text-danger">
+                  Le CIN est requis.
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="ecole">École:</label>
+                <input 
+                  type="text" 
+                  class="form-control" 
+                  id="ecole" 
+                  formControlName="ecole" 
+                  placeholder="Entrez l'école">
+                <div *ngIf="form.get('ecole')?.invalid && form.get('ecole')?.touched" class="text-danger">
+                  L'école est requise.
+                </div>
+              </div>
+              <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Ajouter</button>
+            </form>
+            <div *ngIf="successMessage" class="alert alert-success mt-3">
+              {{ successMessage }}
+            </div>
+            <div *ngIf="errorMessage" class="alert alert-danger mt-3">
+              {{ errorMessage }}
+            </div>
+          </div>
+        </div>
+  
+        <!-- Card for Listing Students -->
+        <div class="card mt-3">
+          <div class="card-header d-flex justify-content-between align-items-center">
+            <span>Liste des étudiants</span>
+            <button class="btn btn-secondary" (click)="getAllStudents()">Get All Students</button>
+          </div>
+          <div class="card-body">
+            <div *ngIf="isListLoaded">
+              <div *ngIf="listErrorMessage" class="alert alert-danger">
+                {{ listErrorMessage }}
+              </div>
+              <div *ngIf="!listErrorMessage">
+                <table class="table table-striped" *ngIf="students.length > 0">
+                  <thead>
+                    <tr>
+                      <th>Nom</th>
+                      <th>Prénom</th>
+                      <th>CIN</th>
+                      <th>École</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let student of students">
+                      <td>{{ student.nomEt }}</td>
+                      <td>{{ student.prenomEt }}</td>
+                      <td>{{ student.cin }}</td>
+                      <td>{{ student.ecole }}</td>
+                    </tr>
+                  </tbody>
+                </table>
+                <div *ngIf="students.length === 0" class="text-muted">
+                  Aucun étudiant trouvé.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
