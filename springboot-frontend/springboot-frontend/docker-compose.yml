@@ -4,6 +4,6 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: angular-app:latest
+    image: 192.168.252.114:8083/angular-app:latest
     ports:
       - "4200:4200"
