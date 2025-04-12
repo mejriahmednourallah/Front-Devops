@@ -1,4 +1,4 @@
-# Use Node 14 as the base image (or choose a version that fits your project)
+# Use Node 18 (or a later version) as the base image to meet Angular CLI requirements
 FROM node:18
 
 # Set the working directory inside the container
@@ -16,5 +16,5 @@ COPY . .
 # Expose port 4200 where the Angular app runs
 EXPOSE 4200
 
-# Run the Angular app
-CMD ["ng", "serve"]
+# Run the Angular app with the correct host and port configurations
+CMD ["ng", "serve", "--host", "0.0.0.0", "--port", "4200"]
