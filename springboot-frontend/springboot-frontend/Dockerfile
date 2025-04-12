@@ -1,5 +1,5 @@
 # Use Node 18 (or a later version) as the base image to meet Angular CLI requirements
-FROM node:18
+FROM node:20-alpine
 
 # Set the working directory inside the container
 WORKDIR /app
