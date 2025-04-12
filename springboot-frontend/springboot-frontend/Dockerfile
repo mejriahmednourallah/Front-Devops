@@ -1,5 +1,5 @@
 # Use Node 14 as the base image (or choose a version that fits your project)
-FROM node:14
+FROM node:18
 
 # Set the working directory inside the container
 WORKDIR /app
