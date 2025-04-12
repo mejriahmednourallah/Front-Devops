@@ -17,4 +17,4 @@ COPY . .
 EXPOSE 4200
 
 # Run the Angular app
-CMD ["npm", "start"]
+CMD ["npm", "serve"]
