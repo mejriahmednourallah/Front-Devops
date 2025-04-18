@@ -67,7 +67,8 @@
               "buildTarget": "springboot-frontend:build:production"
             },
             "development": {
-              "buildTarget": "springboot-frontend:build:development"
+              "buildTarget": "springboot-frontend:build:development",
+              "proxyConfig": "src/proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

@@ -1,0 +1,8 @@
+{
+    "/foyer": {
+      "target": "http://localhost:9097",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }
