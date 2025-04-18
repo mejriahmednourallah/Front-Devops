@@ -1,6 +1,6 @@
 {
-    "/foyer": {
-      "target": "http://localhost:9097",
+    "/": {
+      "target": "http://192.168.252.114:9097",
       "secure": false,
       "changeOrigin": true,
       "logLevel": "debug"

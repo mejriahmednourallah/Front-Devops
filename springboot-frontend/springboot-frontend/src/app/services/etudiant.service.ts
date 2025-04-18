@@ -13,7 +13,7 @@ export interface Etudiant {
   providedIn: 'root'
 })
 export class EtudiantService {
-  private apiUrl = '/etudiant';
+  private apiUrl = '/foyer/etudiant';
 
   constructor(private http: HttpClient) {}
 
