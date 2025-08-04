@@ -1,0 +1,45 @@
+name: Angular CI/CD
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["main"]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: springboot-frontend/springboot-frontend  # Set correct folder
+
+    steps:
+      # 1. Checkout the repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "18" # Adjust if your project uses a different version
+
+      # 3. Install dependencies
+      - name: Install dependencies
+        run: npm ci
+
+      # 4. Build Angular app
+      - name: Build project
+        run: npm run build
+
+      # 5. Run tests
+      - name: Run tests
+        run: npm test -- --watch=false --browsers=ChromeHeadless
+
+      # 6. Build Docker image (optional deployment step)
+      - name: Build Docker image
+        run: docker build -t my-angular-app .
+
+      # 7. Deploy placeholder (can be replaced with real deployment)
+      - name: Deploy placeholder
+        run: echo "Deployment would happen here."
